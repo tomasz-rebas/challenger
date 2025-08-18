@@ -28,7 +28,7 @@ export default function EventsGrid({ events, locations }: Props) {
         <Link href={`/event/${event.id}`} key={`event_card_${event.id}`}>
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <div className="absolute inset-x-0 bottom-0 p-2">
-              <h1 className="text-sm text-primary-foreground">{event.name}</h1>
+              <h2 className="text-sm text-primary-foreground">{event.name}</h2>
               <p className="text-xs text-secondary-foreground">
                 {getLabel(event)}
               </p>
