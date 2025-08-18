@@ -12,16 +12,24 @@ interface Props {
   locations: EventLocation[];
 }
 
+const isStringMatch = (a: string, b: string) =>
+  a.toLowerCase().includes(b.toLowerCase());
+
 export function PopularEvents({ events, locations }: Props) {
   const [search, setSearch] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("all");
 
   const filteredEvents = useMemo(() => {
-    return events.filter(
-      (event: PopularEvent) =>
-        selectedLocation === "all" || `${event.locationId}` === selectedLocation
-    );
-  }, [events, selectedLocation]);
+    return events.filter((event: PopularEvent) => {
+      const matchesSearch = search === "" || isStringMatch(event.name, search);
+
+      const matchesLocation =
+        selectedLocation === "all" ||
+        `${event.locationId}` === selectedLocation;
+
+      return matchesSearch && matchesLocation;
+    });
+  }, [events, search, selectedLocation]);
 
   return (
     <>
