@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Params, PopularEvent } from "@/app/types";
+import { getFormattedDate } from "@/app/helpers/getFormattedDate";
 
 interface Props {
   params: Params;
@@ -27,7 +28,7 @@ export default async function Event({ params }: Props) {
         alt={event.name}
       />
       <h2>{event.name}</h2>
-      <h3>{event.date}</h3>
+      <h3>{getFormattedDate(event.date)}</h3>
       <p>{event.description}</p>
     </div>
   );

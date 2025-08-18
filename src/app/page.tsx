@@ -1,5 +1,6 @@
 import { PopularEvent } from "@/app/types";
 import { PopularEvents } from "./components/PopularEvents";
+import { getFormattedDate } from "./helpers/getFormattedDate";
 
 export default async function Home() {
   const eventData = await fetch(
@@ -15,7 +16,7 @@ export default async function Home() {
       events={eventData.events.map((event: PopularEvent) => {
         return {
           ...event,
-          date: new Date(event.date).toLocaleDateString(),
+          date: getFormattedDate(event.date),
         };
       })}
       locations={locationData.locations}
