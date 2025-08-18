@@ -1,5 +1,5 @@
-import { PopularEvent } from "@/app/types";
-import { getEvents } from "./mock-data";
+import { EventLocation, PopularEvent } from "@/app/types";
+import { getEvents, getLocations } from "./mock-data";
 
 export const database = {
   getPopularEvents: async (
@@ -16,5 +16,8 @@ export const database = {
     const events = await getEvents();
 
     return events.find((event) => event.id === id) ?? null;
+  },
+  getLocations: async (): Promise<EventLocation[]> => {
+    return await getLocations();
   },
 };

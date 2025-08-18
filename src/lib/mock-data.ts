@@ -160,6 +160,10 @@ const events = [
   },
 ];
 
+export async function getLocations() {
+  return locations;
+}
+
 export async function getEvents() {
-  return events
+  return events;
 }

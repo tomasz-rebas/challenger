@@ -8,6 +8,14 @@ export interface PopularEvent {
   imageUrl: string;
 }
 
+export interface EventLocation {
+  id: number;
+  name: string;
+  city: string;
+  country: string;
+  imageUrl: string;
+}
+
 export interface Params {
   id: string;
 }
