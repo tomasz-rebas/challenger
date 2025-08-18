@@ -53,6 +53,28 @@ test("searches the events", async ({ page }) => {
   await expect(noEventsLabel).toBeVisible();
 });
 
+test("filters and searches the events at the same time", async ({ page }) => {
+  const eventCards = page.getByTestId("event-card");
+  await expect(eventCards).toHaveCount(10);
+
+  const searchInput = page.getByLabel("Search events");
+  await expect(searchInput).toBeVisible();
+
+  await searchInput.focus();
+  await page.keyboard.type("h");
+  await expect(eventCards).toHaveCount(4);
+
+  const selectTrigger = page.getByTestId("location-filter");
+  await selectTrigger.click();
+
+  const option = page.getByRole("option", { name: "Ziggo Dome" });
+  await option.click();
+
+  await expect(selectTrigger).toHaveText("Ziggo Dome");
+
+  await expect(eventCards).toHaveCount(2);
+});
+
 test("navigates to the second event page", async ({ page }) => {
   const link = page.getByRole("link", { name: "Down The Rabbit Hole" });
   await expect(link).toBeVisible();
