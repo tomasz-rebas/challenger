@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Params, PopularEvent } from "@/app/types";
 import { getFormattedDate } from "@/app/helpers/getFormattedDate";
 
@@ -20,6 +22,10 @@ export default async function Event({ params }: Props) {
 
   return (
     <div className="flex flex-col space-y-4">
+      <Link href="/" className="flex gap-1">
+        <ArrowLeft />
+        <span>To homepage</span>
+      </Link>
       <Image
         className="object-cover"
         src={event.imageUrl}
