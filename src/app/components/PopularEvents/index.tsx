@@ -4,8 +4,18 @@ import { Calendar, Loader } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+interface Event {
+  id: number;
+  name: string;
+  alerts: number;
+  date: string;
+  locationId: number;
+  description: string | null;
+  imageUrl: string;
+}
+
 export function PopularEvents() {
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
