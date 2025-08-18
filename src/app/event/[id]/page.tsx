@@ -24,7 +24,7 @@ export default async function Event({ params }: Props) {
   );
 
   return (
-    <div className="flex flex-col space-y-4">
+    <section className="flex flex-col space-y-4">
       <div className="flex justify-center">
         <Image
           className="object-cover"
@@ -34,17 +34,19 @@ export default async function Event({ params }: Props) {
           alt={name}
         />
       </div>
-      <h2>{name}</h2>
-      <h3>{getFormattedDate(date)}</h3>
-      {locationData?.location ? (
-        <p>
-          Location:{" "}
-          <Link href={`/location/${locationId}`} className="underline">
-            {locationData.location.name}
-          </Link>
-        </p>
-      ) : null}
-      <p>{description || <i>This event has no description yet.</i>}</p>
-    </div>
+      <article className="flex flex-col space-y-4">
+        <h2>{name}</h2>
+        <h3>{getFormattedDate(date)}</h3>
+        {locationData?.location ? (
+          <p>
+            Location:{" "}
+            <Link href={`/location/${locationId}`} className="underline">
+              {locationData.location.name}
+            </Link>
+          </p>
+        ) : null}
+        <p>{description || <i>This event has no description yet.</i>}</p>
+      </article>
+    </section>
   );
 }

@@ -20,7 +20,7 @@ export default async function Location({ params }: Props) {
   const { imageUrl, name, city, country } = location;
 
   return (
-    <div className="flex flex-col space-y-4">
+    <section className="flex flex-col space-y-4">
       <div className="flex justify-center">
         <Image
           className="object-cover"
@@ -31,10 +31,12 @@ export default async function Location({ params }: Props) {
           unoptimized
         />
       </div>
-      <h2>{name}</h2>
-      <h3>
-        {city}, {country}
-      </h3>
-    </div>
+      <article className="flex flex-col space-y-4">
+        <h2>{name}</h2>
+        <h3>
+          {city}, {country}
+        </h3>
+      </article>
+    </section>
   );
 }
