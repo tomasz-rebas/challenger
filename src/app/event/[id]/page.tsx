@@ -19,6 +19,7 @@ export default async function Event({ params }: Props) {
   }
 
   const { event }: { event: PopularEvent } = data;
+  const { imageUrl, name, date, description } = event;
 
   return (
     <div className="flex flex-col space-y-4">
@@ -28,14 +29,14 @@ export default async function Event({ params }: Props) {
       </Link>
       <Image
         className="object-cover"
-        src={event.imageUrl}
+        src={imageUrl}
         width={400}
         height={280}
-        alt={event.name}
+        alt={name}
       />
-      <h2>{event.name}</h2>
-      <h3>{getFormattedDate(event.date)}</h3>
-      <p>{event.description || <i>This event has no description yet.</i>}</p>
+      <h2>{name}</h2>
+      <h3>{getFormattedDate(date)}</h3>
+      <p>{description || <i>This event has no description yet.</i>}</p>
     </div>
   );
 }
