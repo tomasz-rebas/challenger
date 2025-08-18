@@ -31,6 +31,7 @@ export default async function Location({ params }: Props) {
         width={400}
         height={280}
         alt={name}
+        unoptimized
       />
       <h2>{name}</h2>
       <h3>
