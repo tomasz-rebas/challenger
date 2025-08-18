@@ -7,3 +7,7 @@ export interface PopularEvent {
   description: string | null;
   imageUrl: string;
 }
+
+export interface Params {
+  id: string;
+}
