@@ -10,9 +10,10 @@ interface Props {
 }
 
 export default async function Event({ params }: Props) {
-  const data = await fetch(
+  const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular/${params.id}`
-  ).then((response) => response.json());
+  );
+  const data = await response.json();
 
   if (!data.event) {
     notFound();

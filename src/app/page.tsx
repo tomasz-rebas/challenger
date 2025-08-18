@@ -3,13 +3,15 @@ import { PopularEvents } from "./components/PopularEvents";
 import { getFormattedDate } from "./helpers/getFormattedDate";
 
 export default async function Home() {
-  const eventData = await fetch(
+  const eventResponse = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular`
-  ).then((response) => response.json());
+  );
+  const eventData = await eventResponse.json();
 
-  const locationData = await fetch(
+  const locationResponse = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/locations`
-  ).then((response) => response.json());
+  );
+  const locationData = await locationResponse.json();
 
   return (
     <PopularEvents
