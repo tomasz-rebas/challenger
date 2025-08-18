@@ -28,3 +28,27 @@ test("filters the events", async ({ page }) => {
 
   await expect(eventCards).toHaveCount(4);
 });
+
+test("searches the events", async ({ page }) => {
+  const eventCards = page.getByTestId("event-card");
+  await expect(eventCards).toHaveCount(10);
+
+  const searchInput = page.getByLabel("Search events");
+  await expect(searchInput).toBeVisible();
+
+  await searchInput.focus();
+  await page.keyboard.type("adam");
+  await expect(eventCards).toHaveCount(2);
+
+  await page.keyboard.press("Backspace");
+  await page.keyboard.press("Backspace");
+  await page.keyboard.press("Backspace");
+  await expect(eventCards).toHaveCount(8);
+
+  const noEventsLabel = page.getByText("No events to show.");
+  await expect(noEventsLabel).not.toBeVisible();
+
+  await page.keyboard.type("x");
+  await expect(eventCards).toHaveCount(0);
+  await expect(noEventsLabel).toBeVisible();
+});

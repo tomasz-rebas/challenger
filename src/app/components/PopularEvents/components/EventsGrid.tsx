@@ -15,7 +15,7 @@ export function EventsGrid({ events, locations }: Props) {
   }
 
   if (!events || events.length === 0) {
-    return <p>No events to show</p>;
+    return <p>No events to show.</p>;
   }
 
   return (
