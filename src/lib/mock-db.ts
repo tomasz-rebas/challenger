@@ -7,10 +7,13 @@ export const database = {
     offset: number
   ): Promise<PopularEvent[]> => {
     const events = await getEvents();
+    const sortedEvents = events.toSorted((a, b) => b.alerts - a.alerts);
 
-    return events
-      .toSorted((a, b) => b.alerts - a.alerts)
-      .slice(offset, amount + offset);
+    if (amount === 0) {
+      return sortedEvents;
+    }
+
+    return sortedEvents.slice(offset, amount + offset);
   },
   getEvent: async (id: number): Promise<PopularEvent | null> => {
     const events = await getEvents();

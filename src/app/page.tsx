@@ -4,7 +4,7 @@ import { getFormattedDate } from "./helpers/getFormattedDate";
 
 export default async function Home() {
   const eventData = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular?amount=6`
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular`
   ).then((response) => response.json());
 
   const locationData = await fetch(
