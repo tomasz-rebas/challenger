@@ -1,4 +1,4 @@
-export interface Event {
+export interface PopularEvent {
   id: number;
   name: string;
   alerts: number;

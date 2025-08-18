@@ -1,6 +1,6 @@
 import { Logo } from "./components/Logo";
 import { PopularEvents } from "./components/PopularEvents";
-import { Event } from "./types";
+import { PopularEvent } from "./types";
 
 export default async function Home() {
   const data = await fetch(
@@ -13,7 +13,7 @@ export default async function Home() {
         <Logo />
       </div>
       <PopularEvents
-        events={data.events.map((event: Event) => {
+        events={data.events.map((event: PopularEvent) => {
           return {
             ...event,
             date: new Date(event.date).toLocaleDateString(),

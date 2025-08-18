@@ -2,10 +2,10 @@
 
 import { Calendar } from "lucide-react";
 import Image from "next/image";
-import { Event } from "../../types";
+import { PopularEvent } from "../../types";
 
 interface Props {
-  events: Event[];
+  events: PopularEvent[];
 }
 
 export function PopularEvents({ events }: Props) {
