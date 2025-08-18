@@ -1,8 +1,7 @@
 "use client";
 
-import { Calendar, Loader } from "lucide-react";
+import { Calendar } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 interface Event {
   id: number;
@@ -14,34 +13,16 @@ interface Event {
   imageUrl: string;
 }
 
-export function PopularEvents() {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
+interface Props {
+  events: Event[];
+}
 
-  useEffect(() => {
-    const fetchPopularEvents = async () => {
-      const data = await fetch("/api/events/popular?amount=6").then(
-        (response) => response.json()
-      );
-
-      setEvents(data.events);
-      setLoading(false);
-    };
-
-    fetchPopularEvents();
-  }, []);
-
+export function PopularEvents({ events }: Props) {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
       <h1 className="text-xl md:col-span-3 flex items-center gap-2">
         <Calendar /> Popular events
       </h1>
-
-      {loading && (
-        <div className="grid place-items-center md:col-span-3 p-10">
-          <Loader className="animate-spin" />
-        </div>
-      )}
 
       {events.map((event) => (
         <div className="relative aspect-video rounded-lg overflow-hidden">
