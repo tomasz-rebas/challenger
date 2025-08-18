@@ -4,21 +4,14 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Params, PopularEvent } from "@/app/types";
 import { getFormattedDate } from "@/app/helpers/getFormattedDate";
+import { fetchData } from "@/app/helpers/fetchData";
 
 interface Props {
   params: Params;
 }
 
 export default async function Event({ params }: Props) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular/${params.id}`
-  );
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const data = await response.json();
+  const data = await fetchData(`events/popular/${params.id}`);
 
   if (!data.event) {
     notFound();

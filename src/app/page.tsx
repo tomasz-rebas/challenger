@@ -1,27 +1,11 @@
 import { PopularEvent } from "@/app/types";
 import { PopularEvents } from "./components/PopularEvents";
 import { getFormattedDate } from "./helpers/getFormattedDate";
+import { fetchData } from "./helpers/fetchData";
 
 export default async function Home() {
-  const eventResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular`
-  );
-
-  if (!eventResponse.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const eventData = await eventResponse.json();
-
-  const locationResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/locations`
-  );
-
-  if (!locationResponse.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const locationData = await locationResponse.json();
+  const eventData = await fetchData("events/popular");
+  const locationData = await fetchData("locations");
 
   return (
     <PopularEvents
