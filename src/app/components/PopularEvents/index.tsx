@@ -2,7 +2,7 @@
 
 import { Calendar } from "lucide-react";
 import Image from "next/image";
-import { PopularEvent } from "../../types";
+import { PopularEvent } from "@/app/types";
 
 interface Props {
   events: PopularEvent[];

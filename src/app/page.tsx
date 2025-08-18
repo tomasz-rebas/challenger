@@ -1,6 +1,6 @@
+import { PopularEvent } from "@/app/types";
 import { Logo } from "./components/Logo";
 import { PopularEvents } from "./components/PopularEvents";
-import { PopularEvent } from "./types";
 
 export default async function Home() {
   const data = await fetch(
