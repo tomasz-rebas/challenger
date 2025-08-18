@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import { Calendar } from "lucide-react";
 import { Input as Search } from "@/components/ui/input";
 import { EventLocation, PopularEvent } from "@/app/types";
-import EventsGrid from "./components/EventsGrid";
-import Filtering from "./components/Filtering";
+import { EventsGrid } from "./components/EventsGrid";
+import { Filtering } from "./components/Filtering";
 
 interface Props {
   events: PopularEvent[];

@@ -14,7 +14,7 @@ interface Props {
   setSelectedLocation: Dispatch<SetStateAction<string>>;
 }
 
-export default function Filtering({
+export function Filtering({
   locations,
   selectedLocation,
   setSelectedLocation,

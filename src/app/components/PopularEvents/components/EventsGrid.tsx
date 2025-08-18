@@ -7,7 +7,7 @@ interface Props {
   locations: EventLocation[];
 }
 
-export default function EventsGrid({ events, locations }: Props) {
+export function EventsGrid({ events, locations }: Props) {
   function getLocation(locationId: number): string | null {
     return (
       locations.find((location) => location.id === locationId)?.name ?? null
