@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
 import { Params } from "@/app/types";
 import { fetchData } from "@/app/helpers/fetchData";
 

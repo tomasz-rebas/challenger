@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import {
   Select,
   SelectContent,
@@ -6,7 +7,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { EventLocation } from "@/app/types";
-import { Dispatch, SetStateAction } from "react";
 
 interface Props {
   locations: EventLocation[];
