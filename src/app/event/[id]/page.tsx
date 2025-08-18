@@ -13,6 +13,11 @@ export default async function Event({ params }: Props) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular/${params.id}`
   );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
   const data = await response.json();
 
   if (!data.event) {

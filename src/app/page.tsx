@@ -6,11 +6,21 @@ export default async function Home() {
   const eventResponse = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/events/popular`
   );
+
+  if (!eventResponse.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
   const eventData = await eventResponse.json();
 
   const locationResponse = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/locations`
   );
+
+  if (!locationResponse.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
   const locationData = await locationResponse.json();
 
   return (
