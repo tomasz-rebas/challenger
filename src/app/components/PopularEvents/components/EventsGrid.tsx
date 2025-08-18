@@ -21,7 +21,11 @@ export function EventsGrid({ events, locations }: Props) {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
       {events.map((event: PopularEvent) => (
-        <Link href={`/event/${event.id}`} key={`event_card_${event.id}`}>
+        <Link
+          href={`/event/${event.id}`}
+          key={`event_card_${event.id}`}
+          data-testid="event-card"
+        >
           <div className="relative aspect-video rounded-lg overflow-hidden">
             <div className="absolute inset-x-0 bottom-0 p-2">
               <h2 className="text-sm text-primary-foreground">{event.name}</h2>

@@ -21,7 +21,7 @@ export function Filtering({
 }: Props) {
   return (
     <Select value={selectedLocation} onValueChange={setSelectedLocation}>
-      <SelectTrigger className="w-auto">
+      <SelectTrigger className="w-auto" data-testid="location-filter">
         <SelectValue placeholder="Filter by location" />
       </SelectTrigger>
       <SelectContent>
