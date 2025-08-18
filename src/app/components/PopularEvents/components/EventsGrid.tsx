@@ -27,7 +27,7 @@ export function EventsGrid({ events, locations }: Props) {
           data-testid="event-card"
         >
           <div className="relative aspect-video rounded-lg overflow-hidden">
-            <div className="absolute inset-x-0 bottom-0 p-2">
+            <div className="absolute inset-x-0 bottom-0 p-2 bg-black/60">
               <h2 className="text-sm text-primary-foreground">{event.name}</h2>
               <p className="text-xs text-secondary-foreground">
                 {getLocation(event.locationId)}
