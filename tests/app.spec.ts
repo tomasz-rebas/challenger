@@ -5,11 +5,11 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("checks the title", async ({ page }) => {
-  await expect(page).toHaveTitle(/TicketSwap/);
+  await expect(page).toHaveTitle("TicketSwap");
 });
 
 test("verifies the first link", async ({ page }) => {
-  const link = page.getByRole("link", { name: /Louis Tomlinson/i });
+  const link = page.getByRole("link", { name: "Louis Tomlinson" });
   await expect(link).toBeVisible();
   await expect(link).toHaveAttribute("href", `/event/9`);
 });
@@ -54,7 +54,7 @@ test("searches the events", async ({ page }) => {
 });
 
 test("navigates to the second event page", async ({ page }) => {
-  const link = page.getByRole("link", { name: /Down The Rabbit Hole/i });
+  const link = page.getByRole("link", { name: "Down The Rabbit Hole" });
   await expect(link).toBeVisible();
   await expect(link).toHaveAttribute("href", `/event/4`);
 
