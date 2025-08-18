@@ -1,45 +1,25 @@
-# TicketSwap challenger 🚀
-
-Thank you for doing our challenger. The goal would be to finish the todo-list. If you have any questions you can always [contact us](mailto:rob@ticketswap.com).
-
-## Approach
-
-The challenger is setup in a way for you to showcase your creativity, eye for detail, UX skills and overall knowledge of HTML, CSS and TypeScript. Inside the challenge you'll find your goals set. There is a mocked database available inside the `/src/lib` folder. Feel free to make changes or add new data where needed. In general feel free to use other tools when needed if you have good reasons for this.
-
-We've timeboxed this challenge for roughly _4_ hours. Some of these goals should be pretty straight forward. It's completely up to you how far you want to take it, but keep the timebox in mind. The challenge starts when you're installing the project.
-
-## Assignment
-
-### The Challenger has the following goals:
-
-- Implement a search feature to find events.
-- Add a filter to narrow events by location.
-- Create an event detail page to display event information.
-
-### Optional:
-
-- Propose an additional feature - this can be a feature implementation, an API proposal, or any other improvement you see fit.
-- Add automated tests where needed.
-- Create a location detail page to display location-specific information.
+# TicketSwap challenger solution 🚀
 
 ## Setup
 
-First of all, you need to setup your local environment.
-If you don't have [node/npm](https://nodejs.org/en/) installed yet, be sure to do so.
+1. Clone the repo.
+2. Install the packages with `npm install`.
+3. (Optional) Provide a `.env` file with `NEXT_PUBLIC_BASE_URL` (default: `http://localhost:3000`).
+4. Run the development server with `npm run dev`.
+5. Run the e2e tests with `npx playwright test`.
 
-```shell script
-> git clone git@github.com:TicketSwap/challenger.git
-> cd challenger
-> npm i
-> npm run dev
-```
+## My feature suggestions
 
-The server will start at [localhost:3000](http://localhost:3000), where you can find everything you need to start with the challenger.
+### Fetching strategy
 
-## Handing in the assessment
+For a larger dataset – let's say, hundreds of events – **debouncing** the search by a split second would improve performance since the list wouldn't update after each keystroke.
 
-When you're finished you can send it to us in reply of the mail you got with this assessment or share the repo with [@RobVermeer](https://github.com/robvermeer).
+For thousands of events, I would switch to server-side filtering with pagination to reduce payload size. Clicking the `Apply filters` button would fetch the filtered data from the API.
 
-### Good luck
+The pagination could be based on `amount` and `offset` query parameters that were initially present in the code. Since they're not utilized in the current form, I decided to remove them.
 
-And again if you have any questions, [let us know](mailto:rob@ticketswap.com)! 🤩
+The challenger dataset is quite small and we're only talking about _popular_ events in the assignment, so I consider the reactive approach to be sufficient here.
+
+### Navigation
+
+Add links on the event detail page to navigate between neighbouring events. This would improve the browsing flow by allowing users to move sequentially without returning to the home page. The links would appear at the top of the page, with corresponding arrow icons and keyboard shortcuts for accessibility.
