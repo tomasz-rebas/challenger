@@ -11,6 +11,14 @@ interface Props {
 }
 
 export function PopularEvents({ events, locations }: Props) {
+  function getLocationName(locationId: number) {
+    const location = locations.find(
+      (location: EventLocation) => locationId === location.id
+    );
+
+    return location ? location.name : "";
+  }
+
   return (
     <>
       <h1 className="text-xl flex items-center gap-2">
@@ -25,7 +33,7 @@ export function PopularEvents({ events, locations }: Props) {
                   {event.name}
                 </h1>
                 <p className="text-xs text-secondary-foreground">
-                  {event.locationId} - {event.date}
+                  {getLocationName(event.locationId)} - {event.date}
                 </p>
               </div>
               <Image
