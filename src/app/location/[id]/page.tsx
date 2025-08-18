@@ -25,14 +25,16 @@ export default async function Location({ params }: Props) {
         <ArrowLeft />
         <span>To homepage</span>
       </Link>
-      <Image
-        className="object-cover"
-        src={imageUrl}
-        width={400}
-        height={280}
-        alt={name}
-        unoptimized
-      />
+      <div className="flex justify-center">
+        <Image
+          className="object-cover"
+          src={imageUrl}
+          width={400}
+          height={280}
+          alt={name}
+          unoptimized
+        />
+      </div>
       <h2>{name}</h2>
       <h3>
         {city}, {country}

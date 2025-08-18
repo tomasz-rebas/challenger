@@ -26,13 +26,15 @@ export default async function Event({ params }: Props) {
         <ArrowLeft />
         <span>To homepage</span>
       </Link>
-      <Image
-        className="object-cover"
-        src={imageUrl}
-        width={400}
-        height={280}
-        alt={name}
-      />
+      <div className="flex justify-center">
+        <Image
+          className="object-cover"
+          src={imageUrl}
+          width={400}
+          height={280}
+          alt={name}
+        />
+      </div>
       <h2>{name}</h2>
       <h3>{getFormattedDate(date)}</h3>
       <p>{description || <i>This event has no description yet.</i>}</p>
