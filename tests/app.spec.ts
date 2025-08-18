@@ -67,3 +67,26 @@ test("navigates to the second event page", async ({ page }) => {
   const text = page.getByText("Tickets for Down The Rabbit Hole");
   await expect(text).toBeVisible();
 });
+
+test("navigates to the event page and then to the location page", async ({
+  page,
+}) => {
+  await page.getByRole("link", { name: "The Weeknd" }).click();
+  await expect(page).toHaveURL(/\/event\/8/);
+
+  const date = page.getByText("19/10/2021");
+  await expect(date).toBeVisible();
+
+  const text = page.getByText("sell tickets for The Weeknd on TicketSwap!");
+  await expect(text).toBeVisible();
+
+  const locationLink = page.getByRole("link", { name: "Ziggo Dome" });
+  await expect(locationLink).toBeVisible();
+  await expect(locationLink).toHaveAttribute("href", `/location/3`);
+
+  await locationLink.click();
+  await expect(page).toHaveURL(/\/location\/3/);
+
+  const locationDetails = page.getByText("Amsterdam, Netherlands");
+  await expect(locationDetails).toBeVisible();
+});
