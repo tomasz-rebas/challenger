@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Calendar } from "lucide-react";
 import { EventLocation, PopularEvent } from "@/app/types";
 import EventsGrid from "./components/EventsGrid";
@@ -14,6 +14,13 @@ interface Props {
 export function PopularEvents({ events, locations }: Props) {
   const [selectedLocation, setSelectedLocation] = useState<string>("all");
 
+  const filteredEvents = useMemo(() => {
+    return events.filter(
+      (event: PopularEvent) =>
+        selectedLocation === "all" || `${event.locationId}` === selectedLocation
+    );
+  }, [events, selectedLocation]);
+
   return (
     <>
       <h1 className="text-xl flex items-center gap-2">
@@ -24,7 +31,7 @@ export function PopularEvents({ events, locations }: Props) {
         selectedLocation={selectedLocation}
         setSelectedLocation={setSelectedLocation}
       />
-      <EventsGrid events={events} locations={locations} />
+      <EventsGrid events={filteredEvents} locations={locations} />
     </>
   );
 }
