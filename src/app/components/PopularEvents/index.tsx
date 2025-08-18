@@ -25,7 +25,10 @@ export function PopularEvents({ events }: Props) {
       </h1>
 
       {events.map((event) => (
-        <div className="relative aspect-video rounded-lg overflow-hidden">
+        <div
+          key={`event_card_${event.id}`}
+          className="relative aspect-video rounded-lg overflow-hidden"
+        >
           <div className="absolute inset-x-0 bottom-0 p-2">
             <h1 className="text-sm text-primary-foreground">{event.name}</h1>
             <p className="text-xs text-secondary-foreground">
