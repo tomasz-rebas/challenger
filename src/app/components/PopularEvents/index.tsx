@@ -36,18 +36,20 @@ export function PopularEvents({ events, locations }: Props) {
       <h1 className="text-xl flex items-center gap-2">
         <Calendar /> Popular events
       </h1>
-      <Search
-        placeholder="Search events..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="w-auto"
-        aria-label="Search events"
-      />
-      <Filtering
-        locations={locations}
-        selectedLocation={selectedLocation}
-        setSelectedLocation={setSelectedLocation}
-      />
+      <div className="flex flex-col gap-4 sm:flex-row">
+        <Search
+          placeholder="Search events..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-auto"
+          aria-label="Search events"
+        />
+        <Filtering
+          locations={locations}
+          selectedLocation={selectedLocation}
+          setSelectedLocation={setSelectedLocation}
+        />
+      </div>
       <EventsGrid events={filteredEvents} locations={locations} />
     </>
   );
