@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Loader, AArrowUp } from "lucide-react";
+import { Calendar, Loader } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
