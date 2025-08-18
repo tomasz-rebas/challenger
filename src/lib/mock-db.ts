@@ -2,18 +2,10 @@ import { EventLocation, PopularEvent } from "@/app/types";
 import { getEvents, getLocations } from "./mock-data";
 
 export const database = {
-  getPopularEvents: async (
-    amount: number,
-    offset: number
-  ): Promise<PopularEvent[]> => {
+  getPopularEvents: async (): Promise<PopularEvent[]> => {
     const events = await getEvents();
-    const sortedEvents = events.toSorted((a, b) => b.alerts - a.alerts);
 
-    if (amount === 0) {
-      return sortedEvents;
-    }
-
-    return sortedEvents.slice(offset, amount + offset);
+    return events.toSorted((a, b) => b.alerts - a.alerts);
   },
 
   getEvent: async (id: number): Promise<PopularEvent | null> => {
