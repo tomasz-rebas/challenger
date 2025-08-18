@@ -11,8 +11,14 @@ export default async function Home() {
       <div className="grid gap-3">
         <Logo />
       </div>
-
-      <PopularEvents events={data.events} />
+      <PopularEvents
+        events={data.events.map((event) => {
+          return {
+            ...event,
+            date: new Date(event.date).toLocaleDateString(),
+          };
+        })}
+      />
     </main>
   );
 }

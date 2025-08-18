@@ -32,7 +32,7 @@ export function PopularEvents({ events }: Props) {
           <div className="absolute inset-x-0 bottom-0 p-2">
             <h1 className="text-sm text-primary-foreground">{event.name}</h1>
             <p className="text-xs text-secondary-foreground">
-              {event.locationId} - {new Date(event.date).toLocaleDateString()}
+              {event.locationId} - {event.date}
             </p>
           </div>
 
