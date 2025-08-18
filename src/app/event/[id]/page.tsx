@@ -26,13 +26,9 @@ export default async function Event({ params }: Props) {
   return (
     <section className="flex flex-col space-y-4">
       <div className="flex justify-center">
-        <Image
-          className="object-cover"
-          src={imageUrl}
-          width={400}
-          height={280}
-          alt={name}
-        />
+        <div className="relative w-full max-w-[400px] aspect-[5/3]">
+          <Image className="object-cover" src={imageUrl} fill alt={name} />
+        </div>
       </div>
       <article className="flex flex-col space-y-4">
         <h2>{name}</h2>

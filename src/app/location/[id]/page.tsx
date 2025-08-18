@@ -20,14 +20,15 @@ export default async function Location({ params }: Props) {
   return (
     <section className="flex flex-col space-y-4">
       <div className="flex justify-center">
-        <Image
-          className="object-cover"
-          src={imageUrl}
-          width={400}
-          height={280}
-          alt={name}
-          unoptimized
-        />
+        <div className="relative w-full max-w-[400px] aspect-[5/3]">
+          <Image
+            className="object-cover"
+            src={imageUrl}
+            alt={name}
+            fill
+            unoptimized
+          />
+        </div>
       </div>
       <article className="flex flex-col space-y-4">
         <h2>{name}</h2>
