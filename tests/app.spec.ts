@@ -117,4 +117,11 @@ test.describe("Navigation", () => {
     const locationDetails = page.getByText("Amsterdam, Netherlands");
     await expect(locationDetails).toBeVisible();
   });
+
+  test("tries to access a non-existent page", async ({ page }) => {
+    await page.goto("/event/40");
+
+    const text = page.getByText("Page not found");
+    await expect(text).toBeVisible();
+  });
 });
