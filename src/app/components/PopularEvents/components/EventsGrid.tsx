@@ -18,6 +18,10 @@ export default function EventsGrid({ events, locations }: Props) {
     return location ? `${location.name} - ${name}` : name;
   }
 
+  if (!events || events.length === 0) {
+    return <p>No events to show</p>;
+  }
+
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
       {events.map((event: PopularEvent) => (
