@@ -21,10 +21,6 @@ export default async function Location({ params }: Props) {
 
   return (
     <div className="flex flex-col space-y-4">
-      <Link href="/" className="flex gap-1">
-        <ArrowLeft />
-        <span>To homepage</span>
-      </Link>
       <div className="flex justify-center">
         <Image
           className="object-cover"
