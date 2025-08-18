@@ -2,14 +2,15 @@
 
 import { Calendar } from "lucide-react";
 import Image from "next/image";
-import { PopularEvent } from "@/app/types";
+import { EventLocation, PopularEvent } from "@/app/types";
 import Link from "next/link";
 
 interface Props {
   events: PopularEvent[];
+  locations: EventLocation[];
 }
 
-export function PopularEvents({ events }: Props) {
+export function PopularEvents({ events, locations }: Props) {
   return (
     <>
       <h1 className="text-xl flex items-center gap-2">
