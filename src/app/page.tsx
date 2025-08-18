@@ -1,5 +1,4 @@
 import { PopularEvent } from "@/app/types";
-import { Logo } from "./components/Logo";
 import { PopularEvents } from "./components/PopularEvents";
 
 export default async function Home() {
@@ -8,18 +7,13 @@ export default async function Home() {
   ).then((response) => response.json());
 
   return (
-    <main className="max-w-3xl mx-auto p-4 my-4 grid gap-5">
-      <div className="grid gap-3">
-        <Logo />
-      </div>
-      <PopularEvents
-        events={data.events.map((event: PopularEvent) => {
-          return {
-            ...event,
-            date: new Date(event.date).toLocaleDateString(),
-          };
-        })}
-      />
-    </main>
+    <PopularEvents
+      events={data.events.map((event: PopularEvent) => {
+        return {
+          ...event,
+          date: new Date(event.date).toLocaleDateString(),
+        };
+      })}
+    />
   );
 }
