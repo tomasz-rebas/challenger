@@ -11,12 +11,14 @@ interface Props {
 }
 
 export function PopularEvents({ events, locations }: Props) {
-  function getLocationName(locationId: number) {
+  function getLabel(event: PopularEvent) {
+    const { name, locationId } = event;
+
     const location = locations.find(
       (location: EventLocation) => locationId === location.id
     );
 
-    return location ? location.name : "";
+    return location ? `${location.name} - ${name}` : name;
   }
 
   return (
@@ -33,7 +35,7 @@ export function PopularEvents({ events, locations }: Props) {
                   {event.name}
                 </h1>
                 <p className="text-xs text-secondary-foreground">
-                  {getLocationName(event.locationId)} - {event.date}
+                  {getLabel(event)}
                 </p>
               </div>
               <Image
