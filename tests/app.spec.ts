@@ -52,3 +52,18 @@ test("searches the events", async ({ page }) => {
   await expect(eventCards).toHaveCount(0);
   await expect(noEventsLabel).toBeVisible();
 });
+
+test("navigates to the second event page", async ({ page }) => {
+  const link = page.getByRole("link", { name: /Down The Rabbit Hole/i });
+  await expect(link).toBeVisible();
+  await expect(link).toHaveAttribute("href", `/event/4`);
+
+  await link.click();
+  await expect(page).toHaveURL(/\/event\/4/);
+
+  const date = page.getByText("02/07/2021");
+  await expect(date).toBeVisible();
+
+  const text = page.getByText("Tickets for Down The Rabbit Hole");
+  await expect(text).toBeVisible();
+});
