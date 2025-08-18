@@ -1,5 +1,6 @@
-import { Params } from "@/app/types";
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Params, PopularEvent } from "@/app/types";
 
 interface Props {
   params: Params;
@@ -14,5 +15,20 @@ export default async function Event({ params }: Props) {
     notFound();
   }
 
-  return <div>Event details {data.event.name}</div>;
+  const { event }: { event: PopularEvent } = data;
+
+  return (
+    <div className="flex flex-col space-y-4">
+      <Image
+        className="object-cover"
+        src={event.imageUrl}
+        width={400}
+        height={280}
+        alt={event.name}
+      />
+      <h2>{event.name}</h2>
+      <h3>{event.date}</h3>
+      <p>{event.description}</p>
+    </div>
+  );
 }
