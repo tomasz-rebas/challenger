@@ -1,3 +1,5 @@
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
 export async function fetchData(apiRoute: string) {
   /**
    * In a real-world application, I wouldn't call an internal API route in a server component.
@@ -7,9 +9,7 @@ export async function fetchData(apiRoute: string) {
    * API route is just a part of the database mock - i.e. I'm going to treat
    * it as an external route.
    */
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/${apiRoute}`
-  );
+  const response = await fetch(`${BASE_URL}/api/${apiRoute}`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch data");
