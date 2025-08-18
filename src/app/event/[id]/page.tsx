@@ -35,7 +35,7 @@ export default async function Event({ params }: Props) {
       />
       <h2>{event.name}</h2>
       <h3>{getFormattedDate(event.date)}</h3>
-      <p>{event.description}</p>
+      <p>{event.description || <i>This event has no description yet.</i>}</p>
     </div>
   );
 }
