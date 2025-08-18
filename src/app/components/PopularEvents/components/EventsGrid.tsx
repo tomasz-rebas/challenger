@@ -8,14 +8,10 @@ interface Props {
 }
 
 export default function EventsGrid({ events, locations }: Props) {
-  function getLabel(event: PopularEvent) {
-    const { name, locationId } = event;
-
-    const location = locations.find(
-      (location: EventLocation) => locationId === location.id
+  function getLocation(locationId: number): string | null {
+    return (
+      locations.find((location) => location.id === locationId)?.name ?? null
     );
-
-    return location ? `${location.name} - ${name}` : name;
   }
 
   if (!events || events.length === 0) {
@@ -30,7 +26,7 @@ export default function EventsGrid({ events, locations }: Props) {
             <div className="absolute inset-x-0 bottom-0 p-2">
               <h2 className="text-sm text-primary-foreground">{event.name}</h2>
               <p className="text-xs text-secondary-foreground">
-                {getLabel(event)}
+                {getLocation(event.locationId)}
               </p>
             </div>
             <Image
