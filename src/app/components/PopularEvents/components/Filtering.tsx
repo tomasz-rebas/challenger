@@ -21,7 +21,11 @@ export function Filtering({
 }: Props) {
   return (
     <Select value={selectedLocation} onValueChange={setSelectedLocation}>
-      <SelectTrigger className="w-auto" data-testid="location-filter">
+      <SelectTrigger
+        className="w-auto"
+        data-testid="location-filter"
+        aria-label="Filter by location"
+      >
         <SelectValue placeholder="Filter by location" />
       </SelectTrigger>
       <SelectContent>

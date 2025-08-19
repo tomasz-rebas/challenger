@@ -34,7 +34,7 @@ export function PopularEvents({ events, locations }: Props) {
   return (
     <>
       <h1 className="text-xl flex items-center gap-2">
-        <Calendar /> Popular events
+        <Calendar aria-hidden="true" /> Popular events
       </h1>
       <div className="flex flex-col gap-4 sm:flex-row">
         <Search
